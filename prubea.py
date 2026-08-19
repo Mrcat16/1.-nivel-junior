@@ -1,33 +1,18 @@
-def algoritmo_inserccion(arr):
-    corredor = int(input("Ingrese el tiempo del 1 Corredor: "))
-    arr.append(corredor)
-    corredor2 = int(input("Ingrese el tiempo del 2 Corredor: "))
-    arr.append(corredor2)
-    corredor3 = int(input("Ingrese el tiempo del 3 Corredor: "))
-    arr.append(corredor3)
-    corredor4 = int(input("Ingrese el tiempo del 4 Corredor: "))
-    arr.append(corredor4)
-    corredor5 = int(input("Ingrese el tiempo del 5 Corredor: "))
-    arr.append(corredor5)
-    corredor6 = int(input("Ingrese el tiempo del 6 Corredor: "))
-    arr.append(corredor6)
-    corredor7 = int(input("Ingrese el tiempo del 7 Corredor: "))
-    arr.append(corredor7)
-    corredor8 = int(input("Ingrese el tiempo del 8 Corredor: "))
-    arr.append(corredor8)
-    corredor9 = int(input("Ingrese el tiempo del 9 Corredor: "))
-    arr.append(corredor9)
-    corredor10 = int(input("Ingrese el tiempo del 10 Corredor: "))
-    arr.append(corredor10)
-    n = len(arr)
-    for i in range(1, n):
-        clave = arr[i]
-        j = i-1
-        while j >=0 and arr[j] > clave:
-            arr[j+1] = arr[j]
-            j-=1
-        arr[j+1] = clave
-lista = []
-algoritmo_inserccion(lista)
-for i, x in enumerate(lista[:3],1):
-    print(f"{i} = {x}")
+def timsort(arr): # Creamos la funcion timsort
+    for i in range(1,11): # Creamos un bucle for para que se repita 10 veces
+        while True: # Creamos el while True para poder aplicar el try y except
+            try:
+                corredores = int(input(f"Ingrese el tiempo del corredor numero {i}: ")) # Solicitamos al usuario que ingrese el tiempo del corredor y lo convertimos a entero
+                print()
+                arr.append(corredores) # Agregamos el tiempo del corredor a la lista arr
+                break
+            except ValueError:
+                print()
+                print("Error porfa solo ingrese numeros enteros") # Si el usuario ingresa un valor que no es un numero entero, se le mostrara este mensaje de error
+                print()
+    arr.sort() # Ordenamos la lista arr de menor a mayor
+lista = [] # Creamos una lista vacia para almacenar los tiempos de los corredores
+timsort(lista) # Hacemos que la funcion timsort se ejecute y le pasamos la lista vacia como parametro
+print(f"Primeros 3 corredores") # Mostramos un mensaje donde indicamos que se mostraran los primeros 3 corredores
+for i,x in enumerate(lista[:3], start=1): # Hacemos un bucle for para recorrer la lista y solo mostrar a los 3 primeros corredores que hicieron el menor tiempo
+    print(f"El corredor {i} tiene un tiempo de {x} segundos") # Mostramos un mensaje donde indicamos el numero del corredor y su tiempo en segundos
